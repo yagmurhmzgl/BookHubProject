@@ -1,0 +1,24 @@
+﻿@model UpdateHikayeViwModel
+@{
+    ViewData["Title"] = "UpdateHikaye";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <label>Hikaye Adı</label>
+    <input type="text" asp-for="Name" class="form-control" />
+    <br />
+    <label>YayınlamaTarihi</label>
+    <input type="date" asp-for="YayınlamaTarihi" class="form-control" />
+    <label>GüncellenmeTarihi</label>
+    <input type="date" asp-for="GüncellenmeTarihi" class="form-control" />
+    <label>Görüntülenme Sayısı</label>
+    <input type="number" asp-for="GörüntülenmeSayisi" class="form-control" />
+    <label>Beğeni Sayısı</label>
+    <input type="number" asp-for="BegeniSayısı" class="form-control" />
+    <label>Yorum Sayısı</label>
+    <input type="number" asp-for="YorumSayisi" class="form-control" />
+
+
+</form>
+
