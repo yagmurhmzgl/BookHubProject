@@ -1,0 +1,29 @@
+﻿@model List<ApiKitapViewModel>
+@{
+    Layout = null;
+}
+
+<a href="~/lib/bootstrap/dist/css/bootstrap.min.css.map">~/lib/bootstrap/dist/css/bootstrap.min.css.map</a>
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="conteiner">
+    <br /><br />
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Kapak Fotoğraf</th>
+            <th>Kitap Adı</th>
+            <th>Açıklama</th>
+            <th>Yazar Adı</th>
+        </tr>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.bookRank</td>
+                <td>@item.bookImage</td>
+                <td>@item.bookTitle</td>
+                <td>@item.bookDescription</td>
+                <td>@item.bookAuthor</td>
+            </tr>
+        }
+    </table>
+</div>

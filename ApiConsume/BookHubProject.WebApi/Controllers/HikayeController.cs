@@ -2,7 +2,10 @@
 using BookHub.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Net.Http;
 using System.Runtime.ConstrainedExecution;
+
 
 namespace BookHub.WebApi.Controllers
 {
@@ -11,12 +14,13 @@ namespace BookHub.WebApi.Controllers
     public class HikayeController : ControllerBase
     {
         private readonly IHikayeService _hikayeService;
-        public HikayeController(IHikayeService hikayeService)
+
+		public HikayeController(IHikayeService hikayeService)
         {
             _hikayeService = hikayeService;
         }
 
-        [HttpGet]
+		[HttpGet]
         public IActionResult GettAllHikayeler()
         {
             var hikayeler = _hikayeService.TGetList();
@@ -47,6 +51,13 @@ namespace BookHub.WebApi.Controllers
             var values = _hikayeService.TGetByID(id);
             return Ok(values);
         }
+		[HttpGet("HikayeListesiKategori/{kategoriId}")]
+		public IActionResult HikayeListesiKategori(int kategoriId)
+		{
+			var hikayeler = _hikayeService.GetHikayelerByKategori(kategoriId);
+			return Ok(hikayeler);
+		}
+		
 
-    }
+	}
 }

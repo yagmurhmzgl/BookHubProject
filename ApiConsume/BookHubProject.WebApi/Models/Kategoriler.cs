@@ -7,5 +7,7 @@ public partial class Kategoriler
 {
     public int KategoriId { get; set; }
 
-    public string KategoriTur { get; set; } = null!;
+    public string? Name { get; set; }
+
+    public string? Aciklama { get; set; }
 }

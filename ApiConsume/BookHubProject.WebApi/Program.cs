@@ -23,7 +23,16 @@ builder.Services.AddControllersWithViews();
 
 
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
 
 
 
@@ -45,7 +54,7 @@ app.UseAuthorization();
 app.MapDefaultControllerRoute();//yeni
 app.UseAuthentication();
 app.UseAuthorization();//
-
+app.UseCors("AllowAll");
 app.MapControllers();
 app.UseRouting();//yeni
 // Middleware'leri ekle

@@ -1,4 +1,6 @@
-﻿using BookHub.WebUI.Dtos.CategoryDto;
+﻿
+using BookHub.WebUI.Dtos.HikayeListKategoriDto;
+using BookHub.WebUI.Dtos.ResultDto;
 using BookHub.WebUI.Models.Hikaye;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -16,11 +18,13 @@ namespace BookHub.WebUI.Controllers
 		public async Task<IActionResult> Index()
 		{
 			var client = _httpClientFactory.CreateClient();//istemci oluştur
-			var responseMessage = await client.GetAsync("https://localhost:44367/api/Kategori");
+			var responseMessage = await client.GetAsync("https://localhost:44367/api/Hikaye");
 			if (responseMessage.IsSuccessStatusCode)
 			{
 				var jsonData = await responseMessage.Content.ReadAsStringAsync();
-				var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
+
+				var values = JsonConvert.DeserializeObject<List<ResultHikayeListKategoriDto>>(jsonData);
+
 				return View(values);
 			}
 			return View();

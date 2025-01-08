@@ -1,0 +1,33 @@
+﻿@model List<BookHub.WebUI.Dtos.AdmYazarDto.ResultAdmYazarDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Yazar Adı</th>
+        <th>Yazar Soyadı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.YazarId</th>
+            <td>@item.YazarAdi</td>
+            <td>@item.YazarSoyadi</td>
+            <td><a href="/Yazar/DeleteYazar/@item.YazarId" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
+            <td><a href="/Yazar/UpdateYazar/@item.YazarId" class="btn mb-1 btn-rounded btn-outline-success">Güncelle</a></td>
+
+        </tr>
+
+    }
+</table>
+<a href="/Yazar/AddYazar/" class="btn mb-1 btn-rounded btn-outline-info">Yeni Yazar Girişi</a>
+
+
+

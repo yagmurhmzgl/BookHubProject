@@ -17,7 +17,19 @@ namespace BookHub.BussinessLayer.Concrete
             _hikayeDal = hikayeDal;
         }
 
-        public void TDelete(Hikaye t)
+		public IEnumerable<object> GetAll()
+		{
+			throw new NotImplementedException();
+		}
+
+		public List<Hikaye> GetHikayelerByKategori(int kategoriId)
+		{
+			return _hikayeDal.GetList()
+				.Where(h => h.KategoriId == kategoriId)
+				.ToList(); // Kategoriye göre filtreleme
+		}
+
+		public void TDelete(Hikaye t)
         {
             _hikayeDal.Delete(t);
         }

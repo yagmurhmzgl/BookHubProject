@@ -9,10 +9,14 @@ namespace BookHub.BussinessLayer.Abstract
 {
     public interface IHikayeService:IGenericService<Hikaye>
     {
-        public List<Hikaye> GetAllHikayeler()
+		IEnumerable<object> GetAll();
+
+		public List<Hikaye> GetAllHikayeler()
         {
             // Metotların içeriğini uygulayın
             return new List<Hikaye>();
+
         }
-    }
+		List<Hikaye> GetHikayelerByKategori(int kategoriId);
+	}
 }

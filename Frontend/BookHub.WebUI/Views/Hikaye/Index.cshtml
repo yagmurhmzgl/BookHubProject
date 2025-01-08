@@ -1,7 +1,8 @@
 ﻿@model List<HikayeViwModel>
 
 @{
-    ViewData["Title"] = "Hikaye Page";
+    ViewData["Title"] = "Index";
+    Layout = "/Views/AdminLayout/_AdminLayout.cshtml";
 }
 
 
@@ -9,7 +10,7 @@
     <tr>
         <th>#</th>
         <th>Hikaye Adı</th>
-        <th>Hikaye Türü</th>
+        <th>Kategori</th>
         <th>Sil</th>
         <th>Güncelle</th>
         <th>Detaylar</th>
@@ -21,11 +22,11 @@
             <td>@item.Name</td>
             <td>@item.Title</td>
             <td><a href="/Hikaye/DeleteHikaye/@item.HikayeId" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
-            <td><a href="#" class="btn mb-1 btn-rounded btn-outline-succes">Güncelle</a></td>
-            <td><a href="#" class="btn mb-1 btn-rounded btn-outline-dark">Detaylar</a></td>
+            <td><a href="/Hikaye/UpdateHikaye/@item.HikayeId" class="btn mb-1 btn-rounded btn-outline-success">Güncelle</a></td>
+            <td><a href="@item.HikayeId" class="btn mb-1 btn-rounded btn-outline-dark">Detaylar</a></td>
         </tr>
 
     }
 </table>
-<a href="#" class="btn mb-1 btn-rounded btn-outline-info">Yeni Hikaye Girişi</a>
+<a href="/Hikaye/AddHikaye/" class="btn mb-1 btn-rounded btn-outline-info">Yeni Hikaye Girişi</a>
    

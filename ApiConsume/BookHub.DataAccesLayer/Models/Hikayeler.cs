@@ -7,6 +7,8 @@ public partial class Hikayeler
 {
     public int HikayeId { get; set; }
 
+    public int? YazarId { get; set; }
+
     public int KullaniciId { get; set; }
 
     public int KategoriId { get; set; }

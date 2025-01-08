@@ -16,11 +16,11 @@ namespace BookHub.WebUI.ViewComponents.Default
 		public async Task<IViewComponentResult> InvokeAsync()
 		{
 			var client = _httpClientFactory.CreateClient();//istemci oluştur
-			var responseMessage = await client.GetAsync("https://localhost:44367/api/Kategori");
+			var responseMessage = await client.GetAsync("https://localhost:44367/api/Hikaye");
 			if (responseMessage.IsSuccessStatusCode)
 			{
 				var jsonData = await responseMessage.Content.ReadAsStringAsync();
-				var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
+				var values = JsonConvert.DeserializeObject<List<HikayeListCategoryViewModel>>(jsonData);
 				return View(values);
 			}
 			return View();

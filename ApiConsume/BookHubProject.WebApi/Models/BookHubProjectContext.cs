@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using BookHub.EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookHub.WebApi.Models;
@@ -32,6 +31,8 @@ public partial class BookHubProjectContext : DbContext
 
     public virtual DbSet<Bolumler> Bolumlers { get; set; }
 
+    public virtual DbSet<Bultenler> Bultenlers { get; set; }
+
     public virtual DbSet<Hikayeler> Hikayelers { get; set; }
 
     public virtual DbSet<Kategoriler> Kategorilers { get; set; }
@@ -45,7 +46,7 @@ public partial class BookHubProjectContext : DbContext
     public virtual DbSet<Yorumlar> Yorumlars { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+
         => optionsBuilder.UseSqlServer("Server=YAGMUR\\SQLEXPRESS;Database=BookHubProject;Trusted_Connection=True;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -130,22 +131,28 @@ public partial class BookHubProjectContext : DbContext
             entity.ToTable("Bolumler");
         });
 
+        modelBuilder.Entity<Bultenler>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("Bultenler");
+
+            entity.Property(e => e.BultenMail).HasMaxLength(50);
+        });
+
         modelBuilder.Entity<Hikayeler>(entity =>
         {
             entity.HasKey(e => e.HikayeId);
 
             entity.ToTable("Hikayeler");
-			entity.Property(e => e.Description).HasColumnName("Description");
 
-
-			entity.Property(e => e.Description).HasDefaultValue("");
+            entity.Property(e => e.Decription).HasDefaultValue("");
             entity.Property(e => e.HikayeCoverImage).HasDefaultValue("");
         });
 
         modelBuilder.Entity<Kategoriler>(entity =>
         {
-			modelBuilder.Entity<Kategori>().ToTable("Kategoriler");
-			entity.HasKey(e => e.KategoriId);
+            entity.HasKey(e => e.KategoriId);
 
             entity.ToTable("Kategoriler");
 
